@@ -1,38 +1,31 @@
-N,M,K = map(int,input().split())
-board = []
-Bboard = []
-Wboard = []
-for i in range(N):
-    board.append(input())
+import sys
 
-for i in range(N):
+input = sys.stdin.readline
 
-    Bbuffer = []
-    Wbuffer = []
-    WrowWeight = 0
-    BrowWeight = 0
+N, M, K = map(int, input().split())  # 행, 열, 크기
 
-    for j in range(M):
+maps = [list(input().rstrip()) for _ in range(N)]
 
-        if board[i][j] == "B":
+SUM = [[0] * (M + 1) for _ in range(N + 1)]
 
-            if (i+j) % 2 == 0:
-                Bbuffer.append(0)
-                Wbuffer.append(1)
+for r in range(1, N + 1):
+    for c in range(1, M + 1):
+        if (r + c) % 2 == 0:
+            if maps[r - 1][c - 1] == 'B':
+                SUM[r][c] = SUM[r - 1][c] + SUM[r][c - 1] - SUM[r - 1][c - 1]
             else:
-                Bbuffer.append(1)
-                Wbuffer.append(0)
-
+                SUM[r][c] = SUM[r - 1][c] + SUM[r][c - 1] - SUM[r - 1][c - 1] + 1
         else:
-            if (i+j) % 2 == 0:
-                Bbuffer.append(1)
-                Wbuffer.append(0)
+            if maps[r - 1][c - 1] == 'W':
+                SUM[r][c] = SUM[r - 1][c] + SUM[r][c - 1] - SUM[r - 1][c - 1]
             else:
-                Bbuffer.append(0)
-                Wbuffer.append(1)
+                SUM[r][c] = SUM[r - 1][c] + SUM[r][c - 1] - SUM[r - 1][c - 1] + 1
 
-    Bboard.append(Bbuffer)
-    Wboard.append(Wbuffer)
+max_ = -float('inf')
+min_ = float('inf')
+for r in range(K, N + 1):
+    for c in range(K, M + 1):
+        max_ = max(SUM[r][c] - SUM[r - K][c] - SUM[r][c - K] + SUM[r - K][c - K], max_)
+        min_ = min(SUM[r][c] - SUM[r - K][c] - SUM[r][c - K] + SUM[r - K][c - K], min_)
 
-for i in Wboard:
-    print(i)
+print(min(min_, max_, K * K - min_, K * K - max_))
