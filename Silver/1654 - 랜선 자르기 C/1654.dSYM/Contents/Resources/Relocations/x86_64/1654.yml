@@ -1,0 +1,11 @@
+---
+triple:          'x86_64-apple-darwin'
+binary-path:     "/Users/sinmincheol/Documents/GitHub/Algorithm/Silver/1654 - 랜선 자르기 C/1654"
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _check, symObjAddr: 0x0, symBinAddr: 0x100000EF0, symSize: 0x10 }
+  - { offsetInCU: 0x4D, offset: 0x4D, size: 0x8, addend: 0x0, symName: _num1, symBinAddr: 0x1003D2900, symSize: 0x0 }
+  - { offsetInCU: 0x69, offset: 0x69, size: 0x8, addend: 0x0, symName: _num2, symBinAddr: 0x1003D2904, symSize: 0x0 }
+  - { offsetInCU: 0x7E, offset: 0x7E, size: 0x8, addend: 0x0, symName: _list, symBinAddr: 0x100002000, symSize: 0x0 }
+  - { offsetInCU: 0x96, offset: 0x96, size: 0x8, addend: 0x0, symName: _check, symObjAddr: 0x0, symBinAddr: 0x100000EF0, symSize: 0x10 }
+  - { offsetInCU: 0xAF, offset: 0xAF, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x10, symBinAddr: 0x100000F00, symSize: 0x93 }
+...
